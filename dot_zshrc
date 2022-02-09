@@ -1,0 +1,131 @@
+#
+# Aliases
+#
+
+# FIXME: Optionally allow choosing variants
+function py_versions () {
+  pyenv install --list \
+    | grep -E "^\s*[0-9]\.[0-9]+\.[0-9]+" \
+    | sed "s/ //g" \
+    | sort -Vr
+}
+
+
+# yq
+function yqr () {
+    FILE=$1
+    QUERY=${2:-''}
+    yq r $1 $2 \
+      | highlight -l yaml
+}
+
+function ssl-get-site-cert () {
+  local domain=${1:?};
+  echo \
+    | openssl s_client \
+      -showcerts \
+      -servername ${domain} \
+      -connect ${domain}:443 \
+    2> /dev/null \
+    | openssl x509 -inform pem -noout -text
+}
+
+# Security
+# FIXME: Make this better
+function clean-history () {
+  cat $HISTFILE \
+    | grep -v -E -i '(key|token|secret|password)' \
+    > $HISTFILE.tmp \
+    && \
+    mv $HISTFILE.tmp $HISTFILE 
+}
+
+# AWS
+function aws-ec-pg-settings () {
+  local pg_name=${1:?}
+  local query='
+    .Parameters | 
+    sort_by(.ParameterName) | 
+    map([ .ParameterName, .ParameterValue ] | join(" : ")) | 
+    join("\n")'
+  aws elasticache describe-cache-parameters \
+    --cache-parameter-group-name $pg_name \
+    | jq  -r $query
+}
+
+function aws-ec-pg-diff () {
+    local pg_a_name=${1:?}
+    local pg_b_name=${2:?}
+    diff -s --suppress-common-lines -y \
+      <(aws-ec-pg-settings $pg_a_name) \
+      <(aws-ec-pg-settings $pg_b_name)
+}
+
+#
+# Enable Powerlevel10k instant prompt.
+# Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+#
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export BROWSER='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+export EDITOR='vim'
+
+# emacs keymap
+bindkey -e
+
+#
+# brew
+#
+
+# Set HOMEBREW_PREFIX, etc.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Opt out of Homebrew’s analytics
+export HOMEBREW_NO_ANALYTICS=1
+
+#
+# pyenv
+#
+
+eval "$(pyenv init --path)"
+
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)";
+fi
+
+#
+# go
+#
+
+export GOPATH=$HOME/go
+export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
+export PATH="${PATH:+${PATH}:}:${GOPATH}/bin:${GOROOT}/bin"
+
+#
+# fzf
+#
+
+if [[ ! "$PATH" == *$HOMEBREW_PREFIX/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}$HOMEBREW_PREFIX/opt/fzf/bin"
+fi
+
+# Auto-completion
+[[ $- == *i* ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+
+# Set $PATH to array-unique-special
+typeset -aU path
