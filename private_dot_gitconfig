@@ -1,0 +1,33 @@
+[user]
+email = cconlin@protonmail.com
+name = Chris Conlin
+
+[core]
+excludesfile = ~/.gitignore_global
+autocrlf = input
+whitespace = trailing-space,tab-in-indent,blank-at-eol,blank-at-eof,-indent-with-non-tab,cr-at-eol
+pager = delta
+
+[receive]
+fsckObjects = true
+
+[pager]
+diff = delta --line-numbers
+log = delta
+reflog = delta
+show = delta --line-numbers
+
+[filter "lfs"]
+required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+
+[interactive]
+diffFilter = delta --color-only --features=interactive
+
+[merge]
+conflictstyle = diff3
+
+[url "git@github.com:"]
+insteadOf = https://github.com/
