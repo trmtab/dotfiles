@@ -1,0 +1,38 @@
+set encoding=utf-8
+set nobackup
+set nocompatible
+set lazyredraw
+set showcmd
+set ruler
+set number
+
+filetype on
+filetype indent on
+filetype plugin on
+syntax on
+
+" Git commits
+au FileType gitcommit setlocal spell spelllang=en
+
+" Go
+au FileType go setlocal noexpandtab nolist shiftwidth=4 softtabstop=4 tabstop=4
+
+" HTML
+au FileType html setlocal expandtab noautoindent indentexpr= shiftwidth=2 softtabstop=2 tabstop=2
+
+" Javascript
+au FileType javascript setlocal expandtab keywordprg=cq\ -s shiftwidth=2 softtabstop=2 tabstop=8
+
+" Make
+au FileType make setlocal softtabstop=8 shiftwidth=8 tabstop=8
+
+" Perl
+au FileType perl setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
+
+" Python
+au FileType python setlocal expandtab softtabstop=0 shiftwidth=4 tabstop=8 smarttab
+
+" SQL
+au FileType sql setlocal expandtab shiftwidth=8 softtabstop=8 tabstop=8
+
+" vim: set filetype=vim:
