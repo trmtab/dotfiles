@@ -8,6 +8,9 @@ autocrlf = input
 whitespace = trailing-space,tab-in-indent,blank-at-eol,blank-at-eof,-indent-with-non-tab,cr-at-eol
 pager = delta
 
+[commit]
+gpgsign = true
+
 [receive]
 fsckObjects = true
 
