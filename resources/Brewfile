@@ -6,6 +6,16 @@ tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'romkatv/powerlevel10k'
 
+# GNU
+brew 'coreutils'
+brew 'findutils' 
+brew 'gnu-tar' 
+brew 'gnu-sed' 
+brew 'gawk' 
+brew 'gnutls' 
+brew 'gnu-getopt' 
+brew 'grep'
+
 brew 'age'
 brew 'bind'
 brew 'coreutils'
