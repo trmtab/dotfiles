@@ -11,6 +11,9 @@ pager = delta
 [commit]
 gpgsign = true
 
+[push]
+default = current
+
 [receive]
 fsckObjects = true
 
