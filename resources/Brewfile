@@ -1,5 +1,4 @@
 # Taps
-tap 'cantino/mcfly'
 tap 'cyberark/tools'
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
