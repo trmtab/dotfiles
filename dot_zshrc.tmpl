@@ -1,0 +1,72 @@
+#
+# Enable Powerlevel10k instant prompt.
+# Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+#
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+{{- if eq .chezmoi.os "darwin" }}
+#
+# brew
+#
+# Set HOMEBREW_PREFIX, etc.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Opt out of Homebrew’s analytics
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# Activate p10k
+source $HOMEBREW_PREFIX/opt/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+
+export BROWSER='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+
+#
+# pyenv
+#
+if which pyenv > /dev/null; then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)";
+fi
+
+#
+# go
+#
+export GOPATH=$HOME/go
+export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
+export PATH="${PATH:+${PATH}:}:${GOPATH}/bin:${GOROOT}/bin"
+
+#
+# fzf
+#
+if [[ ! "$PATH" == *$HOMEBREW_PREFIX/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}$HOMEBREW_PREFIX/opt/fzf/bin"
+fi
+
+[[ $- == *i* ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+{{- end }}
+
+# emacs keymap
+bindkey -e
+export EDITOR=vim
+
+# zsh options
+# https://zsh.sourceforge.io/Doc/Release/Options.html#Options
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
+setopt NO_CASE_GLOB
+setopt RM_STAR_SILENT
+setopt EXTENDED_GLOB
+
+# Set $PATH to array-unique-special
+typeset -aU path
+
+{{/* vim: set filetype=zsh: */}}
