@@ -58,6 +58,7 @@ cask 'webpquicklook'
 
 cask 'aws-vault'
 cask 'betterzip'
+cask 'gpg-suite'
 cask 'postico'
 cask 'visual-studio-code'
 
