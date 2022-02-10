@@ -11,6 +11,10 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# emacs keymap
+bindkey -e
+export EDITOR=vim
+
 {{- if eq .chezmoi.os "darwin" }}
 #
 # brew
@@ -54,10 +58,6 @@ fi
 
 source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 {{- end }}
-
-# emacs keymap
-bindkey -e
-export EDITOR=vim
 
 # zsh options
 # https://zsh.sourceforge.io/Doc/Release/Options.html#Options
