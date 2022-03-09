@@ -3,4 +3,14 @@
 
 # Brewfile hash: {{ include ".resources/Brewfile" | sha256sum }}
 brew bundle --no-lock --file=$(chezmoi source-path)/.resources/Brewfile
+
+PY_MAJOR_VERSION=3.9
+PY_LATEST_VERSION=$(pyenv install --list \
+  | grep -E "^\s*$PY_MAJOR_VERSION" \
+  | sort -t '.' -k1,1n -k2,2n -k3,3n \
+  | tail -n1)
+pyenv install -s $PY_LATEST_VERSION
+pyenv global $PY_LATEST_VERSION
+
+python -m pip install -r ~/.local/share/chezmoi/.resources/python-requirements.txt --upgrade
 {{ end -}}
