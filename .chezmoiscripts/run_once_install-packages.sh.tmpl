@@ -14,4 +14,8 @@ pyenv global $PY_LATEST_VERSION
 
 python -m pip install pip --upgrade
 python -m pip install -r ~/.local/share/chezmoi/.resources/python-requirements.txt --upgrade
+
+# AWSCLIv2
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
 {{ end -}}
