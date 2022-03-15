@@ -5,7 +5,12 @@ Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 set encoding=utf-8
+set ffs=unix,dos,mac
 set nobackup
+set nowb
+set noswapfile
+set expandtab
+set smarttab
 set nocompatible
 set lazyredraw
 set showcmd
@@ -15,10 +20,44 @@ set number
 filetype on
 filetype indent on
 filetype plugin on
-syntax on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+let mapleader = ","
+
+" Quick save
+nmap <leader>w :w!<cr>
+" sudo save
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
+
+set wildignore=*.o,*~,*.pyc
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+:fixdel
+
+" For regular expressions turn magic on
+set magic
+
+" Visual mode pressing * or # searches for the current selection
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" Move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+syntax on
 
 " Git commits
 au FileType gitcommit setlocal spell spelllang=en
