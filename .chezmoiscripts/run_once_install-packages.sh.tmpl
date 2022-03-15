@@ -12,5 +12,6 @@ PY_LATEST_VERSION=$(pyenv install --list \
 pyenv install -s $PY_LATEST_VERSION
 pyenv global $PY_LATEST_VERSION
 
+python -m pip install pip --upgrade
 python -m pip install -r ~/.local/share/chezmoi/.resources/python-requirements.txt --upgrade
 {{ end -}}
