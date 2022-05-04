@@ -1,6 +1,6 @@
-{{- if (eq .chezmoi.os "darwin") -}}
-#!/bin/bash
+#!/usr/bin/env bash
 
+{{- if (eq .chezmoi.os "darwin") -}}
 # Brewfile hash: {{ include ".resources/Brewfile" | sha256sum }}
 brew bundle --no-lock --file=$(chezmoi source-path)/.resources/Brewfile
 
@@ -16,13 +16,27 @@ python -m pip install pip --upgrade
 python -m pip install -r ~/.local/share/chezmoi/.resources/python-requirements.txt --upgrade
 
 # AWSCLIv2
-curl https://awscli.amazonaws.com/AWSCLIV2.pkg -o aws-cli.pkg
-sudo installer -pkg aws-cli.pkg -target /
+if ! command -v aws &> /dev/null; then
+  curl https://awscli.amazonaws.com/AWSCLIV2.pkg -o aws-cli.pkg
+  sudo installer -pkg aws-cli.pkg -target /
+fi
 
 # AWS Amplify
-curl -sL https://aws-amplify.github.io/amplify-cli/install | zsh
+if ! command -v amplify &> /dev/null; then
+  curl -sL https://aws-amplify.github.io/amplify-cli/install | zsh
+fi
 
-# AWS Corretto
-curl -L https://corretto.aws/downloads/latest/amazon-corretto-8-aarch64-macos-jdk.pkg -o aws-corretto-jdk.pkg
-sudo installer -pkg aws-corretto-jdk.pkg -target /
+# Install AWS OpenJDK
+if type -p java; then
+  JAVA_VERSION=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}')
+  if [[ ! "$JAVA_VERSION" =~ ^1.8 ]]; then
+    curl -L https://corretto.aws/downloads/latest/amazon-corretto-8-aarch64-macos-jdk.pkg -o aws-corretto-jdk.pkg
+    sudo installer -pkg aws-corretto-jdk.pkg -target /
+  fi
+fi
+
 {{ end -}}
+
+exit 0
+
+# vim: set filetype=bash:
