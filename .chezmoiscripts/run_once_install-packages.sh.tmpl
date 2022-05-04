@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-{{- if (eq .chezmoi.os "darwin") -}}
 # Brewfile hash: {{ include ".resources/Brewfile" | sha256sum }}
 brew bundle --no-lock --file=$(chezmoi source-path)/.resources/Brewfile
 
@@ -44,7 +43,6 @@ vim +'PlugInstall --sync' +qa
 cd ~/.vim/plugged/YouCompleteMe && python3 install.py \
   --ts-completer \
   --go-completer
-{{ end -}}
 
 exit 0
 
