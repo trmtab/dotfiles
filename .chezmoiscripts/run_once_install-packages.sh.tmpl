@@ -17,10 +17,22 @@ pyenv global $PY_LATEST_VERSION
 python -m pip install pip --upgrade
 python -m pip install -r ~/.local/share/chezmoi/.resources/python-requirements.txt --upgrade
 
+install_pkg() {
+  local url=$1
+  local filename="$(mktemp).pkg"
+  curl -sL $url -o $filename
+  sudo installer -pkg $filename -target /
+  rm $filename
+}
+
+# 1Password CLI 2.0 (not available in brew yet)
+if ! command -v op &> /dev/null; then
+  install_pkg https://cache.agilebits.com/dist/1P/op2/pkg/v2.1.0/op_apple_universal_v2.1.0.pkg
+fi
+
 # AWSCLIv2
 if ! command -v aws &> /dev/null; then
-  curl https://awscli.amazonaws.com/AWSCLIV2.pkg -o aws-cli.pkg
-  sudo installer -pkg aws-cli.pkg -target /
+  install_pkg https://awscli.amazonaws.com/AWSCLIV2.pkg
 fi
 
 # AWS Amplify
@@ -32,8 +44,7 @@ fi
 if type -p java; then
   JAVA_VERSION=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}')
   if [[ ! "$JAVA_VERSION" =~ ^1.8 ]]; then
-    curl -L https://corretto.aws/downloads/latest/amazon-corretto-8-aarch64-macos-jdk.pkg -o aws-corretto-jdk.pkg
-    sudo installer -pkg aws-corretto-jdk.pkg -target /
+    install_pkg https://corretto.aws/downloads/latest/amazon-corretto-8-aarch64-macos-jdk.pkg
   fi
 fi
 
