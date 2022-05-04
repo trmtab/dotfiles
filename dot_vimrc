@@ -79,6 +79,7 @@ au FileType perl setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
 
 " Python
 au FileType python setlocal expandtab softtabstop=0 shiftwidth=4 tabstop=8 smarttab
+au FileType toml setlocal expandtab softtabstop=2 shiftwidth=2 tabstop=2 smarttab
 
 " SQL
 au FileType sql setlocal expandtab shiftwidth=8 softtabstop=8 tabstop=8
