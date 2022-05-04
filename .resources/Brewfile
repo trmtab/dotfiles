@@ -1,4 +1,5 @@
 # Taps
+# https://github.com/cyberark/secretless-broker/pull/1456
 tap 'cyberark/tools'
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
