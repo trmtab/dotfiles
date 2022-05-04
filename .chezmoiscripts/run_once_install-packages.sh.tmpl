@@ -16,6 +16,13 @@ python -m pip install pip --upgrade
 python -m pip install -r ~/.local/share/chezmoi/.resources/python-requirements.txt --upgrade
 
 # AWSCLIv2
-curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
-sudo installer -pkg AWSCLIV2.pkg -target /
+curl https://awscli.amazonaws.com/AWSCLIV2.pkg -o aws-cli.pkg
+sudo installer -pkg aws-cli.pkg -target /
+
+# AWS Amplify
+curl -sL https://aws-amplify.github.io/amplify-cli/install | zsh
+
+# AWS Corretto
+curl -L https://corretto.aws/downloads/latest/amazon-corretto-8-aarch64-macos-jdk.pkg -o aws-corretto-jdk.pkg
+sudo installer -pkg aws-corretto-jdk.pkg -target /
 {{ end -}}
