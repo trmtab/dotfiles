@@ -1,0 +1,5 @@
+{{ range (onepassword "ouc5xm7ldulfewhfqmdlrerc4i").fields -}}
+{{   if and (eq .label "public") (eq .type "STRING") -}}
+{{     .value -}}
+{{   end -}}
+{{ end }}
