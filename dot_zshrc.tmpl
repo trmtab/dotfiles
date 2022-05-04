@@ -69,4 +69,15 @@ setopt EXTENDED_GLOB
 # Set $PATH to array-unique-special
 typeset -aU path
 
+alias clean-py='find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf'
+
+prune-git-branch() {
+  local tmpfile=$(mktemp)
+  git branch --merged \
+    | grep -Ev "(master|main)" >$tmpfile \
+    && vim $tmpfile \
+    && xargs git branch -d <$tmpfile \
+    && rm $tmpfile
+}
+
 {{/* vim: set filetype=zsh: */}}
