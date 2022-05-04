@@ -49,14 +49,7 @@ export PATH="${PATH:+${PATH}:}:${GOPATH}/bin:${GOROOT}/bin"
 #
 # fzf
 #
-if [[ ! "$PATH" == *$HOMEBREW_PREFIX/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}$HOMEBREW_PREFIX/opt/fzf/bin"
-fi
-
-[[ $- == *i* ]] && source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
-
-source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
-{{- end }}
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # zsh options
 # https://zsh.sourceforge.io/Doc/Release/Options.html#Options
