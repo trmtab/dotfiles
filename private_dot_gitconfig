@@ -1,6 +1,7 @@
 [user]
 email = cconlin@protonmail.com
 name = Chris Conlin
+signingkey = 36AD9FFBCEE256AE
 
 [core]
 excludesfile = ~/.gitignore_global
