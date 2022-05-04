@@ -14,6 +14,7 @@ export PYTHON_CONFIGURE_OPTS="--enable-framework"
 pyenv install -s $PY_LATEST_VERSION
 pyenv global $PY_LATEST_VERSION
 
+# Python requirements hash: {{ include ".resources/python-requirements.txt" | sha256sum }}
 python -m pip install pip --upgrade
 python -m pip install -r ~/.local/share/chezmoi/.resources/python-requirements.txt --upgrade
 
