@@ -9,6 +9,8 @@ call plug#begin()
 Plug 'junegunn/vim-easy-align'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'cespare/vim-toml', { 'branch': 'main' }
+let g:fzf_install = 'yes | ./install'
+Plug 'junegunn/fzf', { 'do': g:fzf_install }
 
 call plug#end()
 
