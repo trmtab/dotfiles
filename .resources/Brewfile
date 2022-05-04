@@ -8,7 +8,6 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/services'
 tap 'romkatv/powerlevel10k'
 
-# GNU
 brew 'coreutils'
 brew 'findutils' 
 brew 'gnu-tar' 
@@ -19,6 +18,7 @@ brew 'gnu-getopt'
 brew 'grep'
 
 brew 'bzip2' 
+brew 'cmake'
 brew 'openssl@1.1' 
 brew 'readline' 
 brew 'xz'
