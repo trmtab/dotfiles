@@ -20,16 +20,15 @@ export CLICOLOR=1
 # zsh options
 #
 # https://zsh.sourceforge.io/Doc/Release/Options.html#Options
+
 setopt NO_CASE_GLOB
 setopt RM_STAR_SILENT
 setopt EXTENDED_GLOB
 
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 HISTFILE=~/.zhistory
-HISTSIZE=4096
-SAVEHIST=4096
-
-
+HISTSIZE=8192
+SAVEHIST=8192
 
 # vim keymap
 bindkey -v
@@ -118,5 +117,4 @@ prune-git-branch() {
 
 # Added by Amplify CLI binary installer
 export PATH="$HOME/.amplify/bin:$PATH"
-
 {{/* vim: set filetype=zsh ts=2 sts=2 sw=2: */}}
