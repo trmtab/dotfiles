@@ -11,8 +11,36 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# emacs keymap
-bindkey -e
+#
+# Color
+#
+export CLICOLOR=1
+
+#
+# zsh options
+#
+# https://zsh.sourceforge.io/Doc/Release/Options.html#Options
+setopt NO_CASE_GLOB
+setopt RM_STAR_SILENT
+setopt EXTENDED_GLOB
+
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
+HISTFILE=~/.zhistory
+HISTSIZE=4096
+SAVEHIST=4096
+
+
+
+# vim keymap
+bindkey -v
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^K" kill-line
+bindkey "^P" history-search-backward
+bindkey "^Q" push-line-or-edit
+bindkey "^R" history-incremental-search-backward
+bindkey "^Y" accept-and-hold
+
 export EDITOR=vim
 
 #
