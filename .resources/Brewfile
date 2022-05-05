@@ -8,55 +8,65 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/services'
 tap 'romkatv/powerlevel10k'
 
-brew 'coreutils'
-brew 'findutils' 
-brew 'gnu-tar' 
-brew 'gnu-sed' 
-brew 'gawk' 
-brew 'gnutls' 
-brew 'gnu-getopt' 
-brew 'grep'
-
-brew 'bzip2' 
-brew 'cmake'
-brew 'openssl@1.1' 
-brew 'readline' 
-brew 'xz'
-
-brew 'age'
-brew 'bind'
-brew 'coreutils'
-brew 'git-delta'
-brew 'fzf'
+# Languages
 brew 'go'
-brew 'gopass'
-brew 'gpg'
-brew 'jq'
-brew 'kubernetes-cli'
-brew 'loc'
+brew 'pyenv'
+brew 'terraform'
+
+# Compression/Archiving
+brew 'bzip2' 
+brew 'gnu-tar' 
+brew 'xz'
+cask 'betterzip'
+
+# DB
 brew 'mysql-client'
 brew 'pgcli'
-brew 'pinentry-mac'
-brew 'pyenv'
-brew 'rename'
-brew 'ripgrep'
+brew 'postgresql@14'
+cask 'postico'
+
+# General
+brew 'bind'
+brew 'cmake'
+brew 'coreutils'
+brew 'gnu-getopt' 
+brew 'gnutls' 
+brew 'kubernetes-cli'
 brew 'mermaid-cli'
-brew 'summon'
-brew 'svn'
-brew 'terraform'
+brew 'openssl@1.1' 
+brew 'readline' 
+brew 'rename'
+brew 'wget'
+
+# Wrangling/Navigation
+brew 'findutils' 
+brew 'fzf'
+brew 'gawk' 
+brew 'gnu-sed' 
+brew 'grep'
+brew 'jq'
+brew 'loc'
+brew 'ripgrep'
 brew 'the_silver_searcher'
 brew 'tldr'
-brew 'tmux'
 brew 'tree'
-brew 'vim'
-brew 'wget'
 brew 'xsv'
-brew 'postgresql@14'
 
-# Git
+# Secret Management, Encryption, etc.
+brew 'age'
+brew 'gopass'
+brew 'gpg'
+brew 'pinentry-mac'
+brew 'summon'
+cask 'aws-vault'
+cask 'gpg-suite'
+
+# VCS
 brew 'bfg'
 brew 'git'
+brew 'git-delta'
 brew 'hub'
+brew 'svn'
 
 # Dotfile Management
 brew 'chezmoi'
@@ -66,6 +76,7 @@ brew 'powerlevel10k'
 brew 'hyperfine'
 brew 'pv'
 
+# Quicklook Plugins
 # https://github.com/sindresorhus/quick-look-plugins
 cask 'apparency'
 cask 'qlcolorcode'
@@ -76,15 +87,14 @@ cask 'quicklook-json'
 cask 'suspicious-package'
 cask 'webpquicklook'
 
-cask 'aws-vault'
-cask 'betterzip'
-cask 'gpg-suite'
+# Terminal, IDE
+brew 'tmux'
+brew 'vim'
 cask 'iterm2'
-cask 'postico'
 cask 'visual-studio-code'
 
 # Fonts
 cask 'font-meslo-for-powerline'
-cask 'font-meslo-lg-nerd-font'
-cask 'font-meslo-lg-dz'
 cask 'font-meslo-lg'
+cask 'font-meslo-lg-dz'
+cask 'font-meslo-lg-nerd-font'
