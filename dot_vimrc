@@ -27,6 +27,27 @@ set showcmd
 set ruler
 set number
 
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
+" Spell Check
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+" Spell-check Markdown files
+autocmd FileType markdown setlocal spell
+
+" Spell-check Git messages
+autocmd FileType gitcommit setlocal spell
+
+" Set spellfile to location that is guaranteed to exist,
+" can be symlinked to Dropbox or kept in Git
+" and managed outside of thoughtbot/dotfiles using rcm.
+set spellfile=$HOME/.vim-spell-en.utf-8.add
+
+" Autocomplete with dictionary words when spell check is on
+set complete+=kspell
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
