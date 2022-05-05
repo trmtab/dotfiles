@@ -92,7 +92,21 @@ au FileType toml setlocal expandtab softtabstop=2 shiftwidth=2 tabstop=2 smartta
 au FileType sql setlocal expandtab shiftwidth=8 softtabstop=8 tabstop=8
 
 " Shell
+"" When the type of shell script is /bin/sh, assume a POSIX-compatible
+" shell for syntax highlighting purposes.
+let g:is_posix = 1
 au FileType bash setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
 au FileType zsh setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+set nojoinspaces
+
+" https://github.com/ggreer/the_silver_searcher
+" Use Ag over Grep
+set grepprg=ag\ --nogroup\ --nocolor
+
+" Use ag in fzf for listing files
+let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
 
 " vim: set filetype=vim:
