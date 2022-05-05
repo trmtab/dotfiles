@@ -1,1 +1,3 @@
 ipython
+jupyterlab
+pandas
