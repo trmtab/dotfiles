@@ -11,6 +11,7 @@ tap 'romkatv/powerlevel10k'
 # Languages
 brew 'go'
 brew 'pyenv'
+brew 'rust'
 brew 'terraform'
 
 # Compression/Archiving
