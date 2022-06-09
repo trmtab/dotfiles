@@ -1,10 +1,24 @@
+-- Inspiration from: http://robots.thoughtbot.com/improving-the-command-line-postgres-experience
+
 \timing on
 
+\set QUIET 1
 \set HISTSIZE -1
 \set HISTCONTROL ignoredups
-\set HISTFILE ~/.psql_history
+\set HISTFILE ~/.psql_history- :DBNAME
+\set COMP_KEYWORD_CASE upper
+\set VERBOSITY verbose
 \set PAGER less
 
+\pset null '[NULL]'
 \pset linestyle unicode
 \pset border 1
 \pset pager_min_lines 100
+
+-- http://www.postgresql.org/docs/9.3/static/app-psql.html#APP-PSQL-PROMPTING
+\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+-- PROMPT2 is printed when the prompt expects more input, like when you type
+-- SELECT * FROM<enter>. %R shows what type of input it expects.
+\set PROMPT2 '[more] %R > '
+
+\unset QUIET
