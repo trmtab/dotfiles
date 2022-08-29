@@ -24,6 +24,9 @@ log = delta
 reflog = delta
 show = delta --line-numbers
 
+[init]
+defaultBranch = main
+
 [filter "lfs"]
 required = true
 clean = git-lfs clean -- %f
