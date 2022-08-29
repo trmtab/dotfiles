@@ -1,3 +1,7 @@
 ipython
 jupyterlab
 pandas
+tqdm
+aiosql
+pyperclip
+termgraph
