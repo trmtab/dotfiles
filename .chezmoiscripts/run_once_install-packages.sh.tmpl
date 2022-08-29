@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+RESOURCES_DIR="$(chezmoi source-path)/.resources"
+
 # Brewfile hash: {{ include ".resources/Brewfile" | sha256sum }}
-brew bundle --no-lock --file=$(chezmoi source-path)/.resources/Brewfile
+brew bundle --no-lock --file="$RESOURCES_DIR/Brewfile"
 
 PY_MAJOR_VERSION=3.10
 PY_LATEST_VERSION=$(pyenv install --list \
@@ -16,7 +18,10 @@ pyenv global $PY_LATEST_VERSION
 
 # Python requirements hash: {{ include ".resources/python-requirements.txt" | sha256sum }}
 python -m pip install pip --upgrade
-python -m pip install -r ~/.local/share/chezmoi/.resources/python-requirements.txt --upgrade
+python -m pip install -r $RESOURCES_DIR/python-requirements.txt --upgrade
+
+# JS requirements hash: {{ include ".resources/js-requirements.txt" | sha256sum }}
+for i in `cat $RESOURCES_DIR/js-requirements.txt`; do npm install -g $i; done
 
 install_pkg() {
   local url=$1
