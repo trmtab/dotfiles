@@ -7,6 +7,7 @@ tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/services'
 tap 'romkatv/powerlevel10k'
+tap 'heroku/brew'
 
 # Languages
 brew 'go'
@@ -81,6 +82,7 @@ brew 'pv'
 
 # Cloud
 brew 'azure-cli'
+brew 'heroku'
 
 # Quicklook Plugins
 # https://github.com/sindresorhus/quick-look-plugins
