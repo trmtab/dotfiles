@@ -74,7 +74,9 @@ cask 'gpg-suite'
 # VCS
 brew 'bfg'
 brew 'git'
+brew 'gh'
 brew 'git-delta'
+# https://github.com/cli/cli/blob/trunk/docs/gh-vs-hub.md
 brew 'hub'
 brew 'svn'
 
