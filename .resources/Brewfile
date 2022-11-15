@@ -12,6 +12,7 @@ tap 'heroku/brew'
 # Languages
 brew 'go'
 brew 'pyenv'
+brew 'ruby'
 brew 'rust'
 brew 'terraform'
 brew 'nvm'
