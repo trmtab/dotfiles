@@ -42,4 +42,7 @@ conflictstyle = diff3
 [url "git@github.com:"]
 insteadOf = https://github.com/
 
+[url "git@github.com:"]
+insteadOf = git://github.com/
+
 # /* vim: set filetype=gitconfig: */
