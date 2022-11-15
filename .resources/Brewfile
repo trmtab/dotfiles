@@ -37,12 +37,16 @@ brew 'curl'
 brew 'enchant'
 brew 'gnu-getopt' 
 brew 'gnutls' 
-brew 'kubernetes-cli'
 brew 'mermaid-cli'
 brew 'openssl@1.1' 
 brew 'readline' 
 brew 'rename'
 brew 'wget'
+
+# Infra
+brew 'arkade'
+brew 'k3sup'
+brew 'kubernetes-cli'
 
 # Wrangling/Navigation
 brew 'findutils' 
