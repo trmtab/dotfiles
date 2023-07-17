@@ -3,6 +3,9 @@ email = cconlin@protonmail.com
 name = Chris Conlin
 signingkey = 52B870BC0B7B7BE8
 
+[includeIf "gitdir:~/src/illumined/**/.git"]
+path = .illumined.gitconfig
+
 [core]
 excludesfile = ~/.gitignore_global
 autocrlf = input

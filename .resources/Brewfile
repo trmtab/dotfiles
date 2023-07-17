@@ -1,20 +1,22 @@
 # Taps
 # https://github.com/cyberark/secretless-broker/pull/1456
+tap 'anchore/syft'
 tap 'cyberark/tools'
+tap 'heroku/brew'
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/services'
+tap 'pulumi/tap'
 tap 'romkatv/powerlevel10k'
-tap 'heroku/brew'
 
 # Languages
 brew 'go'
 brew 'pyenv'
 brew 'ruby'
 brew 'rust'
-brew 'terraform'
+brew 'rustup-init'
 brew 'nvm'
 
 # Compression/Archiving
@@ -25,6 +27,7 @@ cask 'betterzip'
 
 # DB
 brew 'mysql-client'
+cask 'mysql-shell'
 brew 'pgcli'
 brew 'postgresql@14'
 cask 'postico'
@@ -37,16 +40,22 @@ brew 'curl'
 brew 'enchant'
 brew 'gnu-getopt' 
 brew 'gnutls' 
+brew 'less'
 brew 'mermaid-cli'
 brew 'openssl@1.1' 
 brew 'readline' 
 brew 'rename'
+brew 'syft'
 brew 'wget'
 
 # Infra
 brew 'arkade'
+brew 'eksctl'
 brew 'k3sup'
 brew 'kubernetes-cli'
+brew 'ngrok'
+brew 'pulumi'
+brew 'terraform'
 
 # Wrangling/Navigation
 brew 'findutils' 
@@ -61,6 +70,7 @@ brew 'the_silver_searcher'
 brew 'tldr'
 brew 'tree'
 brew 'xsv'
+brew 'yamllint'
 
 # Secret Management, Encryption, etc.
 brew 'age'

@@ -1,6 +1,7 @@
 ipython
 jupyterlab
 pandas
+pyjanitor
 tqdm
 aiosql
 pyperclip

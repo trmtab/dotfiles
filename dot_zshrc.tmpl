@@ -64,19 +64,24 @@ export BROWSER='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 export PATH=$PATH:$HOME/.arkade/bin/
 
 #
+# go
+#
+export GOPATH=$HOME/go
+export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
+export PATH="${PATH:+${PATH}:}:${GOPATH}/bin:${GOROOT}/bin"
+
+#
+# istio
+#
+export PATH="$PATH:/Users/cconlin/src/istio-1.15.3/bin"
+
+#
 # pyenv
 #
 if which pyenv > /dev/null; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)";
 fi
-
-#
-# go
-#
-export GOPATH=$HOME/go
-export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
-export PATH="${PATH:+${PATH}:}:${GOPATH}/bin:${GOROOT}/bin"
 
 #
 # ruby
@@ -103,7 +108,7 @@ typeset -aU path
 
 dotenv() {
   if [ -f .env ]; then
-    export $(sed '/^ *#/ d' .env)
+    set -o allexport; source .env; set +o allexport
   else
     echo 'No .env file found' 1>&2
     return 1
