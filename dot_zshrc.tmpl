@@ -140,4 +140,16 @@ prune-git-branch() {
 
 # Added by Amplify CLI binary installer
 export PATH="$HOME/.amplify/bin:$PATH"
+
+#
+# Completion
+#
+autoload -Uz compinit
+compinit
+
+# ngrok completion
+if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+fi
+
 {{/* vim: set filetype=zsh ts=2 sts=2 sw=2: */}}

@@ -53,7 +53,7 @@ brew 'arkade'
 brew 'eksctl'
 brew 'k3sup'
 brew 'kubernetes-cli'
-brew 'ngrok'
+cask 'ngrok/ngrok/ngrok'
 brew 'pulumi'
 brew 'terraform'
 
