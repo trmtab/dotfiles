@@ -1,0 +1,8 @@
+[user]
+email = 135924040+edillumin@users.noreply.github.com
+name = Engineer@IlluminEd
+
+[core]
+sshcommand=ssh -i ~/.ssh/illumined_id_rsa -F /dev/null
+
+# /* vim: set filetype=gitconfig: */
