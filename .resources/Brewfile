@@ -30,7 +30,6 @@ brew 'mysql-client'
 cask 'mysql-shell'
 brew 'pgcli'
 brew 'postgresql@14'
-cask 'postico'
 
 # General
 brew 'bind'
