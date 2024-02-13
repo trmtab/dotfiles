@@ -2,6 +2,7 @@
 # https://github.com/cyberark/secretless-broker/pull/1456
 tap 'anchore/syft'
 tap 'cyberark/tools'
+tap 'hashicorp/tap'
 tap 'heroku/brew'
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
@@ -46,6 +47,10 @@ brew 'readline'
 brew 'rename'
 brew 'syft'
 brew 'wget'
+# https://github.com/FiloSottile/mkcert
+brew 'mkcert'
+brew 'nss'
+brew 'dnsmasq'
 
 # Infra
 brew 'arkade'
@@ -54,7 +59,8 @@ brew 'k3sup'
 brew 'kubernetes-cli'
 cask 'ngrok/ngrok/ngrok'
 brew 'pulumi'
-brew 'terraform'
+brew 'hashicorp/tap/terraform'
+brew 'terragrunt'
 
 # Wrangling/Navigation
 brew 'findutils' 
@@ -100,6 +106,7 @@ brew 'pv'
 # Cloud
 brew 'azure-cli'
 brew 'heroku'
+brew 'aws-nuke'
 
 # Quicklook Plugins
 # https://github.com/sindresorhus/quick-look-plugins
