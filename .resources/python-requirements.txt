@@ -7,3 +7,4 @@ aiosql
 pyperclip
 termgraph
 virtualenv
+open-interpreter
