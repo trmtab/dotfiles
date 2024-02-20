@@ -51,6 +51,7 @@ brew 'wget'
 brew 'mkcert'
 brew 'nss'
 brew 'dnsmasq'
+brew 'act'
 
 # Infra
 brew 'arkade'
