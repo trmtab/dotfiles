@@ -8,3 +8,4 @@ pyperclip
 termgraph
 virtualenv
 open-interpreter
+bigquery
