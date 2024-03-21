@@ -52,6 +52,7 @@ brew 'mkcert'
 brew 'nss'
 brew 'dnsmasq'
 brew 'act'
+brew 'watch'
 
 # Infra
 brew 'arkade'
