@@ -131,10 +131,11 @@ typeset -aU path
 #
 
 dotenv() {
-  if [ -f .env ]; then
-    set -o allexport; source .env; set +o allexport
+  local envfile=${1:-.env}
+  if [ -f $envfile ]; then
+    set -o allexport; source $envfile; set +o allexport
   else
-    echo 'No .env file found' 1>&2
+    echo "error: $envfile does not exist" 1>&2
     return 1
   fi
 }
