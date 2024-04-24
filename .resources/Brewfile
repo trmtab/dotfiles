@@ -11,6 +11,7 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/services'
 tap 'pulumi/tap'
 tap 'romkatv/powerlevel10k'
+tap 'sst/tap'
 
 # Languages
 brew 'go'
@@ -61,6 +62,7 @@ brew 'k3sup'
 brew 'kubernetes-cli'
 cask 'ngrok/ngrok/ngrok'
 brew 'pulumi'
+brew 'sst'
 brew 'hashicorp/tap/terraform'
 brew 'terragrunt'
 
