@@ -31,6 +31,12 @@ install_pkg() {
   rm $filename
 }
 
+set_vscode_default_ext() {
+  local ext=$1
+  echo "Setting VSCode to open all .${ext}"
+  duti -s com.microsoft.VSCode ".${ext}" all
+}
+
 # 1Password CLI 2.0 (not available in brew yet)
 if ! command -v op &> /dev/null; then
   install_pkg https://cache.agilebits.com/dist/1P/op2/pkg/v2.1.0/op_apple_universal_v2.1.0.pkg
@@ -74,6 +80,14 @@ exit 0
 
 # gh plugins
 gh extension install gennaro-tedesco/gh-s
+
+# Set extensions for VSCode to open by default
+set_vscode_default_ext js
+set_vscode_default_ext py
+set_vscode_default_ext rb
+set_vscode_default_ext rs
+set_vscode_default_ext sh
+set_vscode_default_ext ts
 
 cp ~/ngrok.yml "$HOME/Library/Application Support/ngrok/ngrok.yml"
 
