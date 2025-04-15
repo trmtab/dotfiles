@@ -2,11 +2,6 @@
 # https://github.com/cyberark/secretless-broker/pull/1456
 tap 'anchore/syft'
 tap 'hashicorp/tap'
-tap 'homebrew/bundle'
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
-tap 'homebrew/services'
 tap 'romkatv/powerlevel10k'
 
 # Languages
@@ -39,8 +34,7 @@ brew 'enchant'
 brew 'gnu-getopt' 
 brew 'gnutls' 
 brew 'less'
-brew 'mermaid-cli'
-brew 'openssl@1.1' 
+brew 'openssl@3' 
 brew 'readline' 
 brew 'rename'
 brew 'syft'
@@ -60,6 +54,7 @@ brew 'k3sup'
 brew 'kubernetes-cli'
 brew 'nixpacks'
 brew 'terragrunt'
+brew 'tfenv'
 cask 'tailscale'
 
 # Wrangling/Navigation
@@ -108,7 +103,6 @@ brew 'aws-nuke'
 # Quicklook Plugins
 # https://github.com/sindresorhus/quick-look-plugins
 cask 'qlcolorcode'
-cask 'qlimagesize'
 cask 'qlmarkdown'
 cask 'qlstephen'
 cask 'quicklook-json'
