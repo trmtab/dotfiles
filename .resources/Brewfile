@@ -60,6 +60,7 @@ brew 'k3sup'
 brew 'kubernetes-cli'
 brew 'nixpacks'
 brew 'terragrunt'
+cask 'tailscale'
 
 # Wrangling/Navigation
 brew 'findutils' 

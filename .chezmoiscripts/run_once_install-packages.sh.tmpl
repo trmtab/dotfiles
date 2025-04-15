@@ -2,8 +2,9 @@
 
 RESOURCES_DIR="$(chezmoi source-path)/.resources"
 
+brew update && brew upgrade
 # Brewfile hash: {{ include ".resources/Brewfile" | sha256sum }}
-brew bundle --no-lock --file="$RESOURCES_DIR/Brewfile"
+brew bundle --file="$RESOURCES_DIR/Brewfile"
 
 PY_MAJOR_VERSION=3.12
 PY_LATEST_VERSION=$(pyenv install --list \
