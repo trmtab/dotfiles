@@ -1,17 +1,13 @@
 # Taps
 # https://github.com/cyberark/secretless-broker/pull/1456
 tap 'anchore/syft'
-tap 'cyberark/tools'
 tap 'hashicorp/tap'
-tap 'heroku/brew'
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/services'
-tap 'pulumi/tap'
 tap 'romkatv/powerlevel10k'
-tap 'sst/tap'
 
 # Languages
 brew 'go'
@@ -29,11 +25,11 @@ cask 'betterzip'
 
 # DB
 brew 'mysql-client'
-cask 'mysql-shell'
 brew 'pgcli'
-brew 'postgresql@14'
+brew 'postgresql@16'
 
 # General
+brew 'bazelisk'
 brew 'bind'
 brew 'cmake'
 brew 'coreutils'
@@ -59,12 +55,10 @@ brew 'watch'
 # Infra
 brew 'arkade'
 brew 'eksctl'
+brew 'hashicorp/tap/terraform'
 brew 'k3sup'
 brew 'kubernetes-cli'
-cask 'ngrok/ngrok/ngrok'
-brew 'pulumi'
-brew 'sst'
-brew 'hashicorp/tap/terraform'
+brew 'nixpacks'
 brew 'terragrunt'
 
 # Wrangling/Navigation
@@ -84,12 +78,10 @@ brew 'yamllint'
 
 # Secret Management, Encryption, etc.
 brew 'age'
-brew 'gopass'
 brew 'gpg'
 brew 'pinentry-mac'
-brew 'summon'
-cask 'aws-vault'
 cask 'gpg-suite'
+cask '1password-cli'
 
 # VCS
 brew 'bfg'
@@ -110,12 +102,10 @@ brew 'pv'
 
 # Cloud
 brew 'azure-cli'
-brew 'heroku'
 brew 'aws-nuke'
 
 # Quicklook Plugins
 # https://github.com/sindresorhus/quick-look-plugins
-cask 'apparency'
 cask 'qlcolorcode'
 cask 'qlimagesize'
 cask 'qlmarkdown'
@@ -129,6 +119,7 @@ brew 'tmux'
 brew 'vim'
 cask 'iterm2'
 cask 'visual-studio-code'
+cask 'cursor'
 
 # Fonts
 cask 'font-meslo-for-powerline'

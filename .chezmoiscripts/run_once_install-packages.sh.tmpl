@@ -5,7 +5,7 @@ RESOURCES_DIR="$(chezmoi source-path)/.resources"
 # Brewfile hash: {{ include ".resources/Brewfile" | sha256sum }}
 brew bundle --no-lock --file="$RESOURCES_DIR/Brewfile"
 
-PY_MAJOR_VERSION=3.10
+PY_MAJOR_VERSION=3.12
 PY_LATEST_VERSION=$(pyenv install --list \
   | grep -E "^\s*$PY_MAJOR_VERSION" \
   | sort -t '.' -k1,1n -k2,2n -k3,3n \
@@ -47,33 +47,16 @@ if ! command -v aws &> /dev/null; then
   install_pkg https://awscli.amazonaws.com/AWSCLIV2.pkg
 fi
 
-# AWS Amplify
-if ! command -v amplify &> /dev/null; then
-  curl -sL https://aws-amplify.github.io/amplify-cli/install | zsh
-fi
-
 # AWS Session Manager CLI
 if ! command -v session-manager-plugin &> /dev/null; then
   install_pkg https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac_arm64/session-manager-plugin.pkg
   sudo ln -s /usr/local/sessionmanagerplugin/bin/session-manager-plugin /usr/local/bin/session-manager-plugin
 fi
 
-# Install AWS OpenJDK
-if type -p java; then
-  JAVA_VERSION=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}')
-  if [[ ! "$JAVA_VERSION" =~ ^1.8 ]]; then
-    install_pkg https://corretto.aws/downloads/latest/amazon-corretto-8-aarch64-macos-jdk.pkg
-  fi
-fi
-
 # Install vim plugins
 vim +'PlugInstall --sync' +qa
 
-cd ~/.vim/plugged/YouCompleteMe && python3 install.py \
-  --ts-completer \
-  --go-completer
-
-exit 0
+# Install acme.sh
 
 # TODO: tmux plugin manager
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -88,7 +71,5 @@ set_vscode_default_ext rb
 set_vscode_default_ext rs
 set_vscode_default_ext sh
 set_vscode_default_ext ts
-
-cp ~/ngrok.yml "$HOME/Library/Application Support/ngrok/ngrok.yml"
 
 {{/* vim: set filetype=bash ts=2 sts=2 sw=2: */}}

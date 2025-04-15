@@ -71,11 +71,6 @@ export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
 export PATH="${PATH:+${PATH}:}:${GOPATH}/bin:${GOROOT}/bin"
 
 #
-# istio
-#
-export PATH="$PATH:/Users/cconlin/src/istio-1.15.3/bin"
-
-#
 # pyenv
 #
 if which pyenv > /dev/null; then
@@ -151,6 +146,8 @@ g() {
 alias -g py-clean='find . | grep -E "(/__pycache__$|\.pyc$|\.pyo$)" | xargs rm -rf'
 alias -g py-versions='pyenv install --list | grep -E "^\s*[2-5]\.[0-9]+\.[0-9]+" | sed "s/ //g" | sort -Vr'
 alias -g py-installed='pyenv versions | grep -oE "[0-9]+\.[0-9]+\.[0-9]+"'
+alias -g wanip4='dig @resolver4.opendns.com myip.opendns.com +short -4'
+alias -g wanip6='dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6'
 
 prune-git-branch() {
   local tmpfile=$(mktemp)
@@ -161,22 +158,73 @@ prune-git-branch() {
     && rm $tmpfile
 }
 
+#
+# acme.sh
+#
+export PATH=$PATH:$HOME/.acme.sh/
+ 
+
+
+# Set $PATH to array-unique-special
+typeset -aU path
+
+# pnpm
+export PNPM_HOME="/Users/cconlin/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+#
+# Functions / Aliases
+#
+
 [ -f ~/.zshaliases ] && source ~/.zshaliases
 
-# Added by Amplify CLI binary installer
-export PATH="$HOME/.amplify/bin:$PATH"
+rand_str() {
+  local len="${1:-16}"
+  LC_ALL=C tr -dc 'A-Za-z0-9$%&,-./:;<=>@[\]^_`{|}~' </dev/urandom | head -c $len; echo
+}
 
-#
-# Completion
-#
+curip() {
+  curl -s 'https://api.ipify.org?format=json' | jq -r '.ip'
+}
+
+# Docker
+tail-docker-logs-json() {
+  local container_name=$1
+  docker logs -f $(docker ps -qf "name=${container_name}") | jq -R "fromjson? | . "
+}
+
+test-dockerignore() {
+  docker image build --no-cache -t build-context -f - . <<EOF
+FROM busybox
+WORKDIR /build-context
+COPY . .
+CMD find .
+EOF
+}
+ 
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+
+source "$HOME/.rye/env"
+
+# bun completions
+[ -s "/Users/cconlin/.bun/_bun" ] && source "/Users/cconlin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+ 
+# PHP Composer
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+# kubectl krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/cconlin/.docker/completions $fpath)
+
 autoload -Uz compinit
 compinit
-
-# ngrok completion
-if command -v ngrok &>/dev/null; then
-  eval "$(ngrok completion)"
-fi
-
-export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
 {{/* vim: set filetype=zsh ts=2 sts=2 sw=2: */}}

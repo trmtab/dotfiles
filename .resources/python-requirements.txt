@@ -9,3 +9,4 @@ termgraph
 virtualenv
 open-interpreter
 bigquery
+hatch
