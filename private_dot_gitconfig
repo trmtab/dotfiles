@@ -10,7 +10,7 @@ whitespace = trailing-space,tab-in-indent,blank-at-eol,blank-at-eof,-indent-with
 pager = delta
 
 [commit]
-gpgsign = true
+gpgsign = false
 
 [push]
 default = current
