@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-RESOURCES_DIR="$(chezmoi source-path)/.resources"
+RESOURCES_DIR="$CHEZMOI_SOURCE_DIR/.resources"
 
 brew update && brew upgrade
 # Brewfile hash: {{ include ".resources/Brewfile" | sha256sum }}
