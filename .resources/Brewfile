@@ -106,7 +106,7 @@ brew 'azure-cli'
 brew 'aws-nuke'
 
 # LLM
-brew 'ollama'
+cask 'ollama-app'
 cask 'claude-code'
 
 # Quicklook Plugins
@@ -124,6 +124,7 @@ brew 'vim'
 cask 'iterm2'
 cask 'visual-studio-code'
 cask 'cursor'
+cask 'zed'
 
 # Fonts
 cask 'font-meslo-for-powerline'
