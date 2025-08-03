@@ -105,6 +105,9 @@ brew 'pv'
 brew 'azure-cli'
 brew 'aws-nuke'
 
+# LLM
+brew 'ollama'
+
 # Quicklook Plugins
 # https://github.com/sindresorhus/quick-look-plugins
 cask 'qlcolorcode'
