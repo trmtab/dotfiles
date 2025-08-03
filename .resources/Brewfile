@@ -107,6 +107,7 @@ brew 'aws-nuke'
 
 # LLM
 brew 'ollama'
+cask 'claude-code'
 
 # Quicklook Plugins
 # https://github.com/sindresorhus/quick-look-plugins
